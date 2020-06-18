@@ -150,7 +150,7 @@
                 DEFAULT CONFIG
             </Button>
         </Grid>
-
+        <!-- Table of all the info sent by PI displayed as raw data -->
         <ListBox Visibility="Collapsed" Grid.Column="1" Grid.Row="1" Name="Data_table" HorizontalContentAlignment="Stretch" SelectionMode="Extended">
             <Grid>
                 <Grid.RowDefinitions>
@@ -165,26 +165,35 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Grid.Row="0" Text="Data name" FontSize="24" FontWeight="Bold" Margin="30,10,100,0"/>
                 <TextBlock Grid.Column="1" Grid.Row="0" Text="Data read" FontSize="24" FontWeight="Bold" Margin="30,10,100,0"/>
+                <TextBlock Grid.Column="2" Grid.Row="0" Text="Data unit" FontSize="24" FontWeight="Bold" Margin="30,10,100,0"/>
 
-                <TextBlock Grid.Column="0" Grid.Row="1" Text="Temperature [℃]" FontSize="16" Margin="30,20,100,0"/>
-                <TextBlock Grid.Column="0" Grid.Row="2" Text="Humidity [g/m3]" FontSize="16" Margin="30,20,100,0"/>
-                <TextBlock Grid.Column="0" Grid.Row="3" Text="Pressure [hPa]" FontSize="16" Margin="30,20,100,0"/>
-                <TextBlock Grid.Column="0" Grid.Row="4" Text="Roll [deg]" FontSize="16" Margin="30,20,100,0"/>
-                <TextBlock Grid.Column="0" Grid.Row="5" Text="Pitch [deg]" FontSize="16" Margin="30,20,100,0"/>
-                <TextBlock Grid.Column="0" Grid.Row="6" Text="Yaw [deg]" FontSize="16" Margin="30,20,100,0"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Temp_read_name}" FontSize="16" Margin="30,20,100,0"/>
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="{Binding Humid_read_name}" FontSize="16" Margin="30,20,100,0"/>
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="{Binding Press_read_name}" FontSize="16" Margin="30,20,100,0"/>
+                <TextBlock Grid.Column="0" Grid.Row="4" Text="{Binding Yaw_read_name}" FontSize="16" Margin="30,20,100,0"/>
+                <TextBlock Grid.Column="0" Grid.Row="5" Text="{Binding Pitch_read_name}" FontSize="16" Margin="30,20,100,0"/>
+                <TextBlock Grid.Column="0" Grid.Row="6" Text="{Binding Roll_read_name}" FontSize="16" Margin="30,20,100,0"/>
 
                 <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Temp_read}" FontSize="16" Margin="30,20,100,0"/>
                 <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Humid_read}" FontSize="16" Margin="30,20,100,0"/>
                 <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Press_read}" FontSize="16" Margin="30,20,100,0"/>
-                <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding Roll_read}" FontSize="16" Margin="30,20,100,0"/>
+                <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding Yaw_read}" FontSize="16" Margin="30,20,100,0"/>
                 <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding Pitch_read}" FontSize="16" Margin="30,20,100,0"/>
-                <TextBlock Grid.Column="1" Grid.Row="6" Text="{Binding Yaw_read}" FontSize="16" Margin="30,20,100,0"/>
+                <TextBlock Grid.Column="1" Grid.Row="6" Text="{Binding Roll_read}" FontSize="16" Margin="30,20,100,0"/>
+
+                <TextBlock Grid.Column="2" Grid.Row="1" Text="{Binding Temp_read_unit}" FontSize="16" Margin="30,20,100,0"/>
+                <TextBlock Grid.Column="2" Grid.Row="2" Text="{Binding Humid_read_unit}" FontSize="16" Margin="30,20,100,0"/>
+                <TextBlock Grid.Column="2" Grid.Row="3" Text="{Binding Press_read_unit}" FontSize="16" Margin="30,20,100,0"/>
+                <TextBlock Grid.Column="2" Grid.Row="4" Text="{Binding Yaw_read_unit}" FontSize="16" Margin="30,20,100,0"/>
+                <TextBlock Grid.Column="2" Grid.Row="5" Text="{Binding Pitch_read_unit}" FontSize="16" Margin="30,20,100,0"/>
+                <TextBlock Grid.Column="2" Grid.Row="6" Text="{Binding Roll_read_unit}" FontSize="16" Margin="30,20,100,0"/>
             </Grid>
         </ListBox>
-
+        <!-- Steering senseHat LEDs by sending RGB color and either pixel address or text -->
         <ListBox Visibility="Collapsed" Grid.Column="1" Grid.Row="1" Name="Led_Matrix" HorizontalContentAlignment="Stretch" SelectionMode="Extended">
             <Grid Margin="0, 20, 0, 0">
                 <Grid.RowDefinitions>

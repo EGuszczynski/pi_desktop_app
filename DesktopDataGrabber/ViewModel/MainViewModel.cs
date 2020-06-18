@@ -63,6 +63,23 @@ namespace DesktopDataGrabber.ViewModel
             }
         }
 
+        private string temp_read_name;
+        public string Temp_read_name
+        {
+            get
+            {
+                return temp_read_name;
+            }
+            set
+            {
+                if (temp_read_name != value)
+                {
+                    temp_read_name = value;
+                    OnPropertyChanged("Temp_read_name");
+                }
+            }
+        }
+
         private string temp_read;
         public string Temp_read
         {
@@ -76,6 +93,38 @@ namespace DesktopDataGrabber.ViewModel
                 {
                     temp_read = value;
                     OnPropertyChanged("Temp_read");
+                }
+            }
+        }
+        private string temp_read_unit;
+        public string Temp_read_unit
+        {
+            get
+            {
+                return temp_read_unit;
+            }
+            set
+            {
+                if (temp_read_unit != value)
+                {
+                    temp_read_unit = value;
+                    OnPropertyChanged("Temp_read_unit");
+                }
+            }
+        }
+        private string humid_read_name;
+        public string Humid_read_name
+        {
+            get
+            {
+                return humid_read_name;
+            }
+            set
+            {
+                if (humid_read_name != value)
+                {
+                    humid_read_name = value;
+                    OnPropertyChanged("Humid_read_name");
                 }
             }
         }
@@ -96,7 +145,38 @@ namespace DesktopDataGrabber.ViewModel
                 }
             }
         }
-
+        private string humid_read_unit;
+        public string Humid_read_unit
+        {
+            get
+            {
+                return humid_read_unit;
+            }
+            set
+            {
+                if (humid_read_unit != value)
+                {
+                    humid_read_unit = value;
+                    OnPropertyChanged("Humid_read_unit");
+                }
+            }
+        }
+        private string press_read_name;
+        public string Press_read_name
+        {
+            get
+            {
+                return press_read_name;
+            }
+            set
+            {
+                if (press_read_name != value)
+                {
+                    press_read_name = value;
+                    OnPropertyChanged("Press_read_name");
+                }
+            }
+        }
         private string press_read;
         public string Press_read
         {
@@ -113,7 +193,38 @@ namespace DesktopDataGrabber.ViewModel
                 }
             }
         }
-
+        private string press_read_unit;
+        public string Press_read_unit
+        {
+            get
+            {
+                return press_read_unit;
+            }
+            set
+            {
+                if (press_read_unit != value)
+                {
+                    press_read_unit = value;
+                    OnPropertyChanged("Press_read_unit");
+                }
+            }
+        }
+        private string yaw_read_name;
+        public string Yaw_read_name
+        {
+            get
+            {
+                return yaw_read_name;
+            }
+            set
+            {
+                if (yaw_read_name != value)
+                {
+                    yaw_read_name = value;
+                    OnPropertyChanged("Yaw_read_name");
+                }
+            }
+        }
         private string yaw_read;
         public string Yaw_read
         {
@@ -127,6 +238,38 @@ namespace DesktopDataGrabber.ViewModel
                 {
                     yaw_read = value;
                     OnPropertyChanged("Yaw_read");
+                }
+            }
+        }
+        private string yaw_read_unit;
+        public string Yaw_read_unit
+        {
+            get
+            {
+                return yaw_read_unit;
+            }
+            set
+            {
+                if (yaw_read_unit != value)
+                {
+                    yaw_read_unit = value;
+                    OnPropertyChanged("Yaw_read_unit");
+                }
+            }
+        }
+        private string pitch_read_name;
+        public string Pitch_read_name
+        {
+            get
+            {
+                return pitch_read_name;
+            }
+            set
+            {
+                if (pitch_read_name != value)
+                {
+                    pitch_read_name = value;
+                    OnPropertyChanged("Pitch_read_name");
                 }
             }
         }
@@ -146,6 +289,38 @@ namespace DesktopDataGrabber.ViewModel
                 }
             }
         }
+        private string pitch_read_unit;
+        public string Pitch_read_unit
+        {
+            get
+            {
+                return pitch_read_unit;
+            }
+            set
+            {
+                if (pitch_read_unit != value)
+                {
+                    pitch_read_unit = value;
+                    OnPropertyChanged("Pitch_read_unit");
+                }
+            }
+        }
+        private string roll_read_name;
+        public string Roll_read_name
+        {
+            get
+            {
+                return roll_read_name;
+            }
+            set
+            {
+                if (roll_read_name != value)
+                {
+                    roll_read_name = value;
+                    OnPropertyChanged("Roll_read_name");
+                }
+            }
+        }
         private string roll_read;
         public string Roll_read
         {
@@ -159,6 +334,22 @@ namespace DesktopDataGrabber.ViewModel
                 {
                     roll_read = value;
                     OnPropertyChanged("Roll_read");
+                }
+            }
+        }
+        private string roll_read_unit;
+        public string Roll_read_unit
+        {
+            get
+            {
+                return roll_read_unit;
+            }
+            set
+            {
+                if (roll_read_unit != value)
+                {
+                    roll_read_unit = value;
+                    OnPropertyChanged("Roll_read_unit");
                 }
             }
         }
@@ -473,9 +664,8 @@ namespace DesktopDataGrabber.ViewModel
             ENVChart_humid.InvalidatePlot(true);
         }
         /**
-          * @brief Asynchronous chart update procedure with
-          *        data obtained from IoT server responses.
-          * @param ip IoT server IP address.
+          * @brief Asynchronous led update procedure with single LED address or whole text send
+          //* @param X, Y - position of LED, R,G,B - color set, Text - text send
           */
         private async void Send_Led_Data()
         {
@@ -486,7 +676,11 @@ namespace DesktopDataGrabber.ViewModel
         {
             await Server.POSTwithClient_send_text(Text, R, G, B);
         }
-
+        /**
+         * @brief Asynchronous chart update procedure with
+         *        data obtained from IoT server responses.
+         * @param ip IoT server IP address.
+         */
         private async void UpdatePlotWithServerResponse()
         {
 #if CLIENT
@@ -513,8 +707,11 @@ namespace DesktopDataGrabber.ViewModel
                 {
                     foreach (JProperty singleProp in obj.Properties())
                     {
-                        
-                        if(singleProp.Path == "[0].value")
+                        if (singleProp.Path == "[0].name")
+                        {
+                            Roll_read_name = singleProp.Value.ToString();
+                        }
+                        if (singleProp.Path == "[0].value")
                         {
                             string x = singleProp.Value.ToString();
                             double result = Convert.ToDouble(x);
@@ -524,6 +721,14 @@ namespace DesktopDataGrabber.ViewModel
                             }
                             Roll_read = result.ToString("N1");
                             UpdatePlot_IMU(timeStamp / 1000.0, result, 0);
+                        }
+                        if (singleProp.Path == "[0].unit")
+                        {
+                            Roll_read_unit = singleProp.Value.ToString();
+                        }
+                        if (singleProp.Path == "[1].name")
+                        {
+                            Pitch_read_name = singleProp.Value.ToString();
                         }
                         if (singleProp.Path == "[1].value")
                         {
@@ -536,6 +741,14 @@ namespace DesktopDataGrabber.ViewModel
                             Pitch_read = result.ToString("N1");
                             UpdatePlot_IMU(timeStamp / 1000.0, result, 1);
                         }
+                        if (singleProp.Path == "[1].unit")
+                        {
+                            Pitch_read_unit = singleProp.Value.ToString();
+                        }
+                        if (singleProp.Path == "[2].name")
+                        {
+                            Yaw_read_name = singleProp.Value.ToString();
+                        }
                         if (singleProp.Path == "[2].value")
                         {
                             string x = singleProp.Value.ToString();
@@ -547,6 +760,10 @@ namespace DesktopDataGrabber.ViewModel
                             Yaw_read = result.ToString("N1");
                             UpdatePlot_IMU(timeStamp / 1000.0, result, 2);
                         }
+                        if (singleProp.Path == "[2].unit")
+                        {
+                            Yaw_read_unit = singleProp.Value.ToString();
+                        }
 
                     }
                 }
@@ -554,12 +771,24 @@ namespace DesktopDataGrabber.ViewModel
                 {
                     foreach (JProperty singleProp in obj.Properties())
                     {
+                        if (singleProp.Path == "[0].name")
+                        {
+                            Temp_read_name = singleProp.Value.ToString();
+                        }
                         if (singleProp.Path == "[0].value")
                         {
                             string x = singleProp.Value.ToString();
                             double result = Convert.ToDouble(x);
                             Temp_read = result.ToString("N2");
                             UpdatePlot_temp(timeStamp / 1000.0, result);
+                        }
+                        if (singleProp.Path == "[0].unit")
+                        {
+                            Temp_read_unit = singleProp.Value.ToString();
+                        }
+                        if (singleProp.Path == "[1].name")
+                        {
+                            Press_read_name = singleProp.Value.ToString();
                         }
                         if (singleProp.Path == "[1].value")
                         {
@@ -568,12 +797,24 @@ namespace DesktopDataGrabber.ViewModel
                             Press_read = result.ToString("N2");
                             UpdatePlot_press(timeStamp / 1000.0, result);
                         }
+                        if (singleProp.Path == "[1].unit")
+                        {
+                            Press_read_unit = singleProp.Value.ToString();
+                        }
+                        if (singleProp.Path == "[2].name")
+                        {
+                            Humid_read_name = singleProp.Value.ToString();
+                        }
                         if (singleProp.Path == "[2].value")
                         {
                             string x = singleProp.Value.ToString();
                             double result = Convert.ToDouble(x);
                             Humid_read = result.ToString("N2");
                             UpdatePlot_humid(timeStamp / 1000.0, result);
+                        }
+                        if (singleProp.Path == "[2].unit")
+                        {
+                            Humid_read_unit = singleProp.Value.ToString();
                         }
                     }
                 }
