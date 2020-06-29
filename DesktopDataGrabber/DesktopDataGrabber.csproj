@@ -75,6 +75,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\IoTServer.cs" />
+    <Compile Include="Model\MeasurementModel.cs" />
+    <Compile Include="ViewModel\MeasurementViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Page Include="View\Themes\MetroDark\MetroDark.MSControls.Core.Implicit.xaml">
       <Generator>MSBuild:Compile</Generator>

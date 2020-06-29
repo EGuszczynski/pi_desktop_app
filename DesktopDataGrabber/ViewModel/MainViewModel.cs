@@ -16,6 +16,9 @@ using OxyPlot.Axes;
 using OxyPlot.Series;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+
 
 namespace DesktopDataGrabber.ViewModel
 {
@@ -26,6 +29,8 @@ namespace DesktopDataGrabber.ViewModel
       */
     public class MainViewModel : INotifyPropertyChanged
     {
+        public ObservableCollection<MeasurementViewModel> Measurements { get; set; }
+
         #region Properties
         private string ipAddress;
         public string IpAddress
@@ -63,22 +68,7 @@ namespace DesktopDataGrabber.ViewModel
             }
         }
 
-        private string temp_read_name;
-        public string Temp_read_name
-        {
-            get
-            {
-                return temp_read_name;
-            }
-            set
-            {
-                if (temp_read_name != value)
-                {
-                    temp_read_name = value;
-                    OnPropertyChanged("Temp_read_name");
-                }
-            }
-        }
+       
 
         private string temp_read;
         public string Temp_read
@@ -96,38 +86,7 @@ namespace DesktopDataGrabber.ViewModel
                 }
             }
         }
-        private string temp_read_unit;
-        public string Temp_read_unit
-        {
-            get
-            {
-                return temp_read_unit;
-            }
-            set
-            {
-                if (temp_read_unit != value)
-                {
-                    temp_read_unit = value;
-                    OnPropertyChanged("Temp_read_unit");
-                }
-            }
-        }
-        private string humid_read_name;
-        public string Humid_read_name
-        {
-            get
-            {
-                return humid_read_name;
-            }
-            set
-            {
-                if (humid_read_name != value)
-                {
-                    humid_read_name = value;
-                    OnPropertyChanged("Humid_read_name");
-                }
-            }
-        }
+        
 
         private string humid_read;
         public string Humid_read
@@ -145,38 +104,7 @@ namespace DesktopDataGrabber.ViewModel
                 }
             }
         }
-        private string humid_read_unit;
-        public string Humid_read_unit
-        {
-            get
-            {
-                return humid_read_unit;
-            }
-            set
-            {
-                if (humid_read_unit != value)
-                {
-                    humid_read_unit = value;
-                    OnPropertyChanged("Humid_read_unit");
-                }
-            }
-        }
-        private string press_read_name;
-        public string Press_read_name
-        {
-            get
-            {
-                return press_read_name;
-            }
-            set
-            {
-                if (press_read_name != value)
-                {
-                    press_read_name = value;
-                    OnPropertyChanged("Press_read_name");
-                }
-            }
-        }
+        
         private string press_read;
         public string Press_read
         {
@@ -193,38 +121,7 @@ namespace DesktopDataGrabber.ViewModel
                 }
             }
         }
-        private string press_read_unit;
-        public string Press_read_unit
-        {
-            get
-            {
-                return press_read_unit;
-            }
-            set
-            {
-                if (press_read_unit != value)
-                {
-                    press_read_unit = value;
-                    OnPropertyChanged("Press_read_unit");
-                }
-            }
-        }
-        private string yaw_read_name;
-        public string Yaw_read_name
-        {
-            get
-            {
-                return yaw_read_name;
-            }
-            set
-            {
-                if (yaw_read_name != value)
-                {
-                    yaw_read_name = value;
-                    OnPropertyChanged("Yaw_read_name");
-                }
-            }
-        }
+      
         private string yaw_read;
         public string Yaw_read
         {
@@ -241,38 +138,7 @@ namespace DesktopDataGrabber.ViewModel
                 }
             }
         }
-        private string yaw_read_unit;
-        public string Yaw_read_unit
-        {
-            get
-            {
-                return yaw_read_unit;
-            }
-            set
-            {
-                if (yaw_read_unit != value)
-                {
-                    yaw_read_unit = value;
-                    OnPropertyChanged("Yaw_read_unit");
-                }
-            }
-        }
-        private string pitch_read_name;
-        public string Pitch_read_name
-        {
-            get
-            {
-                return pitch_read_name;
-            }
-            set
-            {
-                if (pitch_read_name != value)
-                {
-                    pitch_read_name = value;
-                    OnPropertyChanged("Pitch_read_name");
-                }
-            }
-        }
+        
         private string pitch_read;
         public string Pitch_read
         {
@@ -289,38 +155,7 @@ namespace DesktopDataGrabber.ViewModel
                 }
             }
         }
-        private string pitch_read_unit;
-        public string Pitch_read_unit
-        {
-            get
-            {
-                return pitch_read_unit;
-            }
-            set
-            {
-                if (pitch_read_unit != value)
-                {
-                    pitch_read_unit = value;
-                    OnPropertyChanged("Pitch_read_unit");
-                }
-            }
-        }
-        private string roll_read_name;
-        public string Roll_read_name
-        {
-            get
-            {
-                return roll_read_name;
-            }
-            set
-            {
-                if (roll_read_name != value)
-                {
-                    roll_read_name = value;
-                    OnPropertyChanged("Roll_read_name");
-                }
-            }
-        }
+       
         private string roll_read;
         public string Roll_read
         {
@@ -337,22 +172,7 @@ namespace DesktopDataGrabber.ViewModel
                 }
             }
         }
-        private string roll_read_unit;
-        public string Roll_read_unit
-        {
-            get
-            {
-                return roll_read_unit;
-            }
-            set
-            {
-                if (roll_read_unit != value)
-                {
-                    roll_read_unit = value;
-                    OnPropertyChanged("Roll_read_unit");
-                }
-            }
-        }
+    
         private string x = "0";
         public string X
         {
@@ -472,6 +292,9 @@ namespace DesktopDataGrabber.ViewModel
 
         public MainViewModel()
         {
+            Measurements = new ObservableCollection<MeasurementViewModel>();
+
+
             IMUChart = new PlotModel { Title = "IMU data" };
 
             ENVChart_temp = new PlotModel { Title = "Temperature" };
@@ -699,37 +522,53 @@ namespace DesktopDataGrabber.ViewModel
 #endif
             try
             {
-#if DYNAMIC
+#if DYNAMIC 
+                App.Current.Dispatcher.Invoke((System.Action)delegate
+                {
+                    JArray measurementsJsonArray = JArray.Parse(responseText_ENV.Replace(']',',')+ responseText_IMU.TrimStart('['));
+
+                    var measurementsList = measurementsJsonArray.ToObject<List<MeasurementModel>>();
+
+                    measurementsList.RemoveAt(3);
+                    measurementsList.RemoveAt(6);
+
+                    if (Measurements.Count < measurementsList.Count)
+                    {
+                        foreach (var m in measurementsList)
+                        {
+                            Measurements.Add(new MeasurementViewModel(m));
+                        }
+                    }
+                    // Update existing elements in collection
+                    else
+                    {
+                        for (int i = 0; i < Measurements.Count; i++)
+                            Measurements[i].UpdateWithModel(measurementsList[i]);
+                    }
+                });
+
+
+
                 JArray array_IMU = JArray.Parse(responseText_IMU);
                 JArray array_ENV = JArray.Parse(responseText_ENV);
-                
+
                 foreach (JObject obj in array_IMU.Children<JObject>())
                 {
                     foreach (JProperty singleProp in obj.Properties())
                     {
-                        if (singleProp.Path == "[0].name")
-                        {
-                            Roll_read_name = singleProp.Value.ToString();
-                        }
+                        
                         if (singleProp.Path == "[0].value")
                         {
                             string x = singleProp.Value.ToString();
                             double result = Convert.ToDouble(x);
-                            if(result>180)
+                            if (result > 180)
                             {
                                 result -= 360;
                             }
                             Roll_read = result.ToString("N1");
                             UpdatePlot_IMU(timeStamp / 1000.0, result, 0);
                         }
-                        if (singleProp.Path == "[0].unit")
-                        {
-                            Roll_read_unit = singleProp.Value.ToString();
-                        }
-                        if (singleProp.Path == "[1].name")
-                        {
-                            Pitch_read_name = singleProp.Value.ToString();
-                        }
+                        
                         if (singleProp.Path == "[1].value")
                         {
                             string x = singleProp.Value.ToString();
@@ -741,14 +580,7 @@ namespace DesktopDataGrabber.ViewModel
                             Pitch_read = result.ToString("N1");
                             UpdatePlot_IMU(timeStamp / 1000.0, result, 1);
                         }
-                        if (singleProp.Path == "[1].unit")
-                        {
-                            Pitch_read_unit = singleProp.Value.ToString();
-                        }
-                        if (singleProp.Path == "[2].name")
-                        {
-                            Yaw_read_name = singleProp.Value.ToString();
-                        }
+                        
                         if (singleProp.Path == "[2].value")
                         {
                             string x = singleProp.Value.ToString();
@@ -760,35 +592,19 @@ namespace DesktopDataGrabber.ViewModel
                             Yaw_read = result.ToString("N1");
                             UpdatePlot_IMU(timeStamp / 1000.0, result, 2);
                         }
-                        if (singleProp.Path == "[2].unit")
-                        {
-                            Yaw_read_unit = singleProp.Value.ToString();
-                        }
-
+                        
                     }
                 }
                 foreach (JObject obj in array_ENV.Children<JObject>())
                 {
                     foreach (JProperty singleProp in obj.Properties())
                     {
-                        if (singleProp.Path == "[0].name")
-                        {
-                            Temp_read_name = singleProp.Value.ToString();
-                        }
                         if (singleProp.Path == "[0].value")
                         {
                             string x = singleProp.Value.ToString();
                             double result = Convert.ToDouble(x);
                             Temp_read = result.ToString("N2");
                             UpdatePlot_temp(timeStamp / 1000.0, result);
-                        }
-                        if (singleProp.Path == "[0].unit")
-                        {
-                            Temp_read_unit = singleProp.Value.ToString();
-                        }
-                        if (singleProp.Path == "[1].name")
-                        {
-                            Press_read_name = singleProp.Value.ToString();
                         }
                         if (singleProp.Path == "[1].value")
                         {
@@ -797,25 +613,14 @@ namespace DesktopDataGrabber.ViewModel
                             Press_read = result.ToString("N2");
                             UpdatePlot_press(timeStamp / 1000.0, result);
                         }
-                        if (singleProp.Path == "[1].unit")
-                        {
-                            Press_read_unit = singleProp.Value.ToString();
-                        }
-                        if (singleProp.Path == "[2].name")
-                        {
-                            Humid_read_name = singleProp.Value.ToString();
-                        }
-                        if (singleProp.Path == "[2].value")
+                         if (singleProp.Path == "[2].value")
                         {
                             string x = singleProp.Value.ToString();
                             double result = Convert.ToDouble(x);
                             Humid_read = result.ToString("N2");
                             UpdatePlot_humid(timeStamp / 1000.0, result);
                         }
-                        if (singleProp.Path == "[2].unit")
-                        {
-                            Humid_read_unit = singleProp.Value.ToString();
-                        }
+                      
                     }
                 }
 
